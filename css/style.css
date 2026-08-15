@@ -13,7 +13,6 @@
   padding: 0;
 }
 
-/* Kunci scroll saat pertama kali dibuka */
 html {
   scroll-behavior: smooth;
 }
@@ -56,7 +55,7 @@ body.lock-scroll {
   background-color: #fcf8f2;
 }
 
-/* Oval Frame Foto Pasangan */
+/* Membatasi Ukuran Foto Oval */
 .cover-photo-wrapper {
   margin-top: 20px;
 }
@@ -75,6 +74,7 @@ body.lock-scroll {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 /* Inisial & Nama Pasangan */
@@ -106,7 +106,7 @@ body.lock-scroll {
   margin-top: 4px;
 }
 
-/* Area Tamu Undangan */
+/* Area Tamu */
 .guest-section {
   margin: 10px 0;
 }
@@ -130,7 +130,7 @@ body.lock-scroll {
   color: var(--text-muted);
 }
 
-/* Tombol Buka Undangan Berbentuk Pil Marun */
+/* Tombol Buka Undangan */
 .btn-open-scroll {
   background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-dark));
   color: #ffffff;
