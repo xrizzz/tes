@@ -32,7 +32,7 @@ function copyText(elementId) {
 }
 
 // 4. Hitung Mundur (Pastikan format tanggal valid)
-const targetDate = new Date("2026-12-28T08:00:00").getTime();
+const targetDate = new Date("2026-08-25T08:00:00").getTime();
 
 setInterval(function() {
   const now = new Date().getTime();
