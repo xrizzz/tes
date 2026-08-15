@@ -1,12 +1,11 @@
 :root {
-  --primary-green: #2d5a43;       /* Hijau Emerald / Forest */
-  --green-dark: #1e3d2d;          /* Hijau Gelap */
-  --green-soft: #4a7c59;          /* Hijau Sage / Soft */
-  --bg-cream: #f4f7f4;            /* Background Lembut Hijau Pucat */
-  --card-bg: #ffffff;
-  --accent-gold: #c29b38;         /* Aksen Emas Lembut */
-  --text-dark: #233128;
-  --text-muted: #6b7c72;
+  --sage-main: #2d5a43;        /* Hijau Forest / Sage Pekat */
+  --sage-dark: #1b3829;        /* Hijau Gelap Tombol */
+  --sage-light: #527d65;       /* Hijau Lembut */
+  --bg-page: #f6f8f6;          /* Background Lembut */
+  --card-white: #ffffff;
+  --text-dark: #202b24;
+  --text-gray: #68796e;
 }
 
 * {
@@ -21,12 +20,13 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #1a241e;
+  background-color: #141b16;
   color: var(--text-dark);
   display: flex;
   justify-content: center;
 }
 
+/* Mengunci scroll di awal sebelum tombol ditekan */
 body.lock-scroll {
   overflow: hidden;
   height: 100vh;
@@ -34,41 +34,43 @@ body.lock-scroll {
 
 .mobile-container {
   width: 100%;
-  max-width: 480px;
-  background-color: var(--bg-cream);
+  max-width: 460px;
+  background-color: var(--bg-page);
   min-height: 100vh;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.4);
   position: relative;
 }
 
-/* === COVER SECTION === */
-.cover-section {
+/* === COVER PERSIS MEHNIKAH (TEMA HIJAU) === */
+.cover-wrapper {
+  position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   text-align: center;
-  padding: 45px 20px 35px;
+  padding: 40px 20px 30px;
   background: 
-    radial-gradient(circle at top, rgba(45, 90, 67, 0.88) 0%, rgba(74, 124, 89, 0.25) 55%, transparent 75%),
-    url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80') bottom/cover no-repeat;
-  background-color: #f1f6f2;
+    radial-gradient(circle at top, rgba(45, 90, 67, 0.75) 0%, rgba(82, 125, 101, 0.15) 55%, transparent 75%),
+    #fafcfb;
+  overflow: hidden;
 }
 
-/* Frame Foto Oval */
-.cover-photo-wrapper {
+/* Frame Foto Oval Mehnikah */
+.photo-frame-container {
   margin-top: 15px;
+  z-index: 2;
 }
 
 .photo-oval {
-  width: 180px;
-  height: 240px;
+  width: 175px;
+  height: 235px;
   border-radius: 50% / 40%;
-  overflow: hidden;
   border: 4px solid #ffffff;
-  box-shadow: 0 10px 25px rgba(35, 49, 40, 0.25);
+  box-shadow: 0 10px 25px rgba(32, 43, 36, 0.25);
+  overflow: hidden;
   margin: 0 auto;
 }
 
@@ -79,175 +81,211 @@ body.lock-scroll {
   display: block;
 }
 
-/* Inisial Nama di Cover */
-.couple-initials {
+/* Inisial Nama Pasangan */
+.initials-container {
   display: flex;
   justify-content: center;
-  gap: 35px;
-  margin: 12px 0;
+  gap: 30px;
+  margin: 10px 0;
+  z-index: 2;
 }
 
-.initial-box {
+.initial-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.script-init {
-  font-family: 'Cinzel', serif;
-  font-size: 3.2rem;
+.big-serif {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
   line-height: 1;
-  color: var(--green-dark);
+  color: var(--sage-dark);
 }
 
-.name-label {
-  font-family: 'Cinzel', serif;
-  font-size: 1.05rem;
+.name-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
   letter-spacing: 1.5px;
-  color: var(--primary-green);
-  margin-top: 4px;
+  color: var(--sage-main);
+  margin-top: 2px;
 }
 
-/* Tamu Undangan */
-.guest-section {
-  margin: 10px 0;
+/* Kotak Keterangan Tamu Undangan */
+.guest-card-mehnikah {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(210, 225, 215, 0.8);
+  width: 90%;
+  z-index: 2;
 }
 
-.guest-to {
-  font-size: 0.88rem;
-  color: #4a5a50;
+.guest-label {
+  font-size: 0.85rem;
+  color: var(--text-gray);
 }
 
-.guest-title {
-  font-size: 1.35rem;
+.guest-target {
+  font-size: 1.25rem;
   font-weight: 700;
   font-style: italic;
-  color: #17241d;
-  margin: 6px 0;
+  color: #1a251e;
+  margin: 4px 0;
 }
 
-.guest-note {
-  font-size: 0.75rem;
+.guest-disclaimer {
+  font-size: 0.72rem;
   font-style: italic;
-  color: var(--text-muted);
+  color: #839489;
 }
 
-/* Tombol Hijau Elegan */
-.btn-open-scroll {
-  background: linear-gradient(135deg, var(--primary-green), var(--green-dark));
+/* Tombol Mehnikah Pill */
+.btn-box {
+  z-index: 2;
+  margin-top: 5px;
+}
+
+.btn-mehnikah {
+  background: linear-gradient(135deg, var(--sage-main), var(--sage-dark));
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 12px 30px;
   font-size: 0.95rem;
   font-weight: 600;
   border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(45, 90, 67, 0.4);
-  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(27, 56, 41, 0.35);
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-open-scroll:hover {
-  transform: scale(1.04);
-  background: linear-gradient(135deg, var(--green-soft), var(--primary-green));
+.btn-mehnikah:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(27, 56, 41, 0.45);
+}
+
+/* Ornamen Bawah */
+.bottom-floral {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80') bottom/cover no-repeat;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* === MAIN CONTENT === */
-.section {
-  padding: 55px 24px;
+.section-content {
+  padding: 60px 24px;
+}
+
+.text-center {
   text-align: center;
 }
 
-.script-title {
+.greeting-lead {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--text-gray);
+  margin-bottom: 6px;
+}
+
+.script-couple {
   font-family: 'Alex Brush', cursive;
-  font-size: 3.2rem;
-  color: var(--primary-green);
-  margin-bottom: 8px;
+  font-size: 3.4rem;
+  color: var(--sage-main);
+  margin-bottom: 15px;
 }
 
-.section-sub {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+.quote-text {
+  font-size: 0.88rem;
   line-height: 1.6;
-  margin-bottom: 25px;
+  color: var(--text-gray);
+  margin-bottom: 35px;
 }
 
-.name-text {
+.person-name {
   font-family: 'Cinzel', serif;
   font-size: 1.45rem;
-  color: var(--green-dark);
+  color: var(--sage-dark);
 }
 
-.parent-text {
+.person-bio {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-gray);
   margin-top: 4px;
 }
 
-.and-sym {
+.and-divider {
   font-family: 'Alex Brush', cursive;
-  font-size: 2.6rem;
-  color: var(--accent-gold);
-  margin: 10px 0;
+  font-size: 2.8rem;
+  color: var(--sage-light);
+  margin: 8px 0;
 }
 
-.divider {
-  border: none;
-  border-top: 1px dashed #b5c7bc;
-  width: 75%;
-  margin: 0 auto;
-}
-
-.event-card {
-  background: var(--card-bg);
+/* Kartu Acara */
+.event-card-green {
+  background: var(--card-white);
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  border: 1px solid #d2e0d7;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e1ece5;
+  text-align: center;
 }
 
-.event-card h4 {
+.event-type {
   font-family: 'Cinzel', serif;
-  color: var(--primary-green);
-  font-size: 1.25rem;
+  color: var(--sage-main);
+  font-size: 1.3rem;
   margin-bottom: 12px;
 }
 
-.event-card p {
+.event-date, .event-time, .event-loc {
   font-size: 0.9rem;
   margin: 6px 0;
+  color: var(--text-dark);
 }
 
-.btn-maps {
+.btn-location {
   display: inline-block;
   margin-top: 14px;
-  padding: 8px 22px;
-  background-color: var(--primary-green);
+  padding: 8px 24px;
+  background-color: var(--sage-main);
   color: #ffffff;
   text-decoration: none;
   font-size: 0.85rem;
+  font-weight: 500;
   border-radius: 20px;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
-.btn-maps:hover {
-  background-color: var(--green-dark);
+.btn-location:hover {
+  background-color: var(--sage-dark);
 }
 
-footer {
+/* Footer */
+.footer-mehnikah {
   text-align: center;
   padding: 40px 20px;
-  background: #142018;
-  color: #8c9e93;
-  font-size: 0.85rem;
+  background: #141c17;
+  color: #8c9f93;
 }
 
 .script-footer {
   font-family: 'Alex Brush', cursive;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #ffffff;
   margin-bottom: 6px;
+}
+
+.closing-text {
+  font-size: 0.85rem;
 }
