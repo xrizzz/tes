@@ -1,36 +1,52 @@
-// 1. Ambil Nama Tamu dari URL Parameter (?to=Nama+Tamu)
+/ 1. Ambil Nama Tamu
 const urlParams = new URLSearchParams(window.location.search);
 const guestParam = urlParams.get('to');
 if (guestParam) {
-  document.getElementById('guestName').innerText = guestParam;
+  const guestEl = document.getElementById('guestName');
+  if (guestEl) guestEl.innerText = guestParam;
 }
 
-// 2. Fungsi Buka Undangan & Putar Musik
+// 2. Fungsi Tombol Buka Undangan
 function openInvitation() {
-  document.getElementById('cover').classList.add('open');
-  
+  const cover = document.getElementById('cover');
+  if (cover) {
+    cover.classList.add('open');
+  }
+
   const music = document.getElementById('bgMusic');
   if (music) {
-    music.play().catch(() => {
-      console.log('Audio autoplay diblokir browser, putar manual via kontrol');
+    music.play().catch(function(error) {
+      console.log("Autoplay dicegah browser:", error);
     });
   }
 }
 
-// 4. Hitung Mundur (Countdown Timer)
-const targetDate = new Date('Sep 28, 2026 08:00:00').getTime();
+// 3. Salin Rekening
+function copyText(elementId) {
+  const el = document.getElementById(elementId);
+  if (el) {
+    navigator.clipboard.writeText(el.innerText).then(() => {
+      alert('Nomor rekening berhasil disalin!');
+    });
+  }
+}
 
-const interval = setInterval(function() {
+// 4. Hitung Mundur (Pastikan format tanggal valid)
+const targetDate = new Date("2026-12-28T08:00:00").getTime();
+
+setInterval(function() {
   const now = new Date().getTime();
   const distance = targetDate - now;
 
-  if (distance < 0) {
-    clearInterval(interval);
-    return;
-  }
+  if (distance > 0) {
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
 
-  document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-  document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+    if (daysEl) daysEl.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+    if (hoursEl) hoursEl.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    if (minutesEl) minutesEl.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    if (secondsEl) secondsEl.innerText = Math.floor((distance % (1000 * 60)) / 1000);
+  }
 }, 1000);
