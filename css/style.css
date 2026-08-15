@@ -1259,3 +1259,59 @@ body.lock-scroll .music-floating-btn {
 html {
   scroll-behavior: smooth !important;
 }
+
+/* ========================================================
+   STYLING FOOTER BRANDING FANAY.STUDIO
+   ======================================================== */
+.footer-branding {
+  text-align: center;
+  padding: 35px 20px 90px; /* Padding bawah ekstra agar tidak tertutup Bottom Navbar */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(196, 218, 203, 0.4);
+  margin-top: 40px;
+}
+
+.brand-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--sage-dark, #1b3829);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.heart-icon {
+  display: inline-block;
+  animation: pulseHeart 1.5s infinite;
+}
+
+@keyframes pulseHeart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Tombol WhatsApp */
+.btn-wa-branding {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366; /* Warna khas WhatsApp */
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 25px;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-wa-branding:hover {
+  background: #20ba5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+}
+
+.btn-wa-branding .wa-icon {
+  font-size: 1.1rem;
+}
