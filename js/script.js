@@ -269,3 +269,44 @@ function openInvitation() {
     }
   }, 400);
 }
+
+// ========================================================
+// FUNGSI GULIR HALUS DARI COVER KE KONTEN UTAMA
+// ========================================================
+function openInvitation() {
+  // 1. Buka kunci scroll pada body & html
+  document.body.classList.remove("lock-scroll");
+  document.documentElement.classList.remove("lock-scroll");
+  document.body.style.overflow = "auto";
+  document.documentElement.style.overflow = "auto";
+  document.body.style.touchAction = "auto";
+
+  // 2. Putar musik latar
+  if (typeof music !== "undefined" && music) {
+    music.play().then(() => {
+      if (typeof musicIcon !== "undefined" && musicIcon) {
+        musicIcon.classList.add("fa-spin");
+      }
+    }).catch((err) => {
+      console.log("Audio autoplay:", err);
+    });
+  }
+
+  // 3. Gulir halus terukur ke section berikutnya (#main-content / #couple)
+  const targetSection = document.getElementById("main-content") || document.getElementById("couple");
+  if (targetSection) {
+    setTimeout(() => {
+      targetSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 50);
+  }
+
+  // 4. Refresh animasi AOS
+  setTimeout(() => {
+    if (typeof AOS !== "undefined") {
+      AOS.refresh();
+    }
+  }, 600);
+}
