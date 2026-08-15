@@ -265,28 +265,33 @@
         </div>
 
         <!-- Form RSVP -->
-        <form class="rsvp-form" onsubmit="submitWish(event)" data-aos="fade-up">
-          <div class="form-group">
-            <label>Nama Lengkap</label>
-            <input type="text" id="senderName" placeholder="Masukkan nama Anda..." required>
-          </div>
+        <!-- Section Ucapan & Doa -->
+<section id="ucapan-section" class="py-5" style="padding: 20px; max-width: 600px; margin: auto;">
+  <h2 style="text-align: center; margin-bottom: 20px; font-family: serif;">Ucapan & Doa Restu</h2>
+  
+  <!-- Form Kirim Pesan -->
+  <form id="ucapanForm" style="background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 25px;">
+    <div style="margin-bottom: 12px;">
+      <input type="text" id="senderName" placeholder="Nama Anda" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+    </div>
+    <div style="margin-bottom: 12px;">
+      <select id="attendanceStatus" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
+        <option value="Hadir">Hadir</option>
+        <option value="Akan Hadir">Akan Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir / Berhalangan</option>
+      </select>
+    </div>
+    <div style="margin-bottom: 12px;">
+      <textarea id="senderMessage" rows="3" placeholder="Tuliskan ucapan dan doa..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; resize: none;"></textarea>
+    </div>
+    <button type="submit" id="btnKirimUcapan" style="width: 100%; padding: 12px; background-color: #606c38; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Kirim Ucapan</button>
+  </form>
 
-          <div class="form-group">
-            <label>Konfirmasi Kehadiran</label>
-            <select id="attendance" required>
-              <option value="Hadir">Saya akan Hadir</option>
-              <option value="Tidak Hadir">Mohon Maaf, Tidak Bisa Hadir</option>
-              <option value="Ragu-ragu">Masih Ragu-ragu</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Pesan / Doa Restu</label>
-            <textarea id="senderMsg" rows="3" placeholder="Tuliskan ucapan dan doa terbaik Anda..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Kirim Ucapan</button>
-        </form>
+  <!-- Daftar Ucapan yang Masuk -->
+  <div id="commentsList" style="max-height: 350px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+    <!-- Pesan tamu akan otomatis muncul di sini secara real-time -->
+  </div>
+</section>
 
         <!-- Daftar Ucapan yang Masuk -->
         <div class="wishes-list" id="wishesContainer" data-aos="fade-up">
