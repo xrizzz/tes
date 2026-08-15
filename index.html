@@ -258,26 +258,27 @@
       </section>
 
       <!-- ==================== 8. LIVE RSVP & BUKU UCAPAN ==================== -->
-      <section id="rsvp" class="section-block">
-        <div class="text-center" data-aos="fade-up">
-          <h2 class="section-title">Ucapan & Doa</h2>
-          <p class="section-desc">Berikan doa restu dan konfirmasi kehadiran Anda untuk kedua mempelai.</p>
+      <!-- Section Ucapan & Doa Restu Modern dengan Animasi -->
+      <section id="ucapan-section" style="max-width: 520px; margin: 30px auto; padding: 20px 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        
+        <div data-aos="fade-up" data-aos-duration="1000" style="text-align: center; margin-bottom: 24px;">
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 26px; color: #2d3748; margin: 0 0 6px 0;">Ucapan & Doa Restu</h2>
+          <p style="color: #718096; font-size: 13px; margin: 0;">Berikan doa dan harapan terbaik Anda untuk kedua mempelai</p>
         </div>
-
-  
-        <!-- Form Kirim Ucapan Modern -->
-        <form id="ucapanForm" style="background: #ffffff; padding: 22px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.04); border: 1px solid #edf2f7; margin-bottom: 26px;">
+        
+        <!-- Form Kirim Ucapan -->
+        <form id="ucapanForm" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" style="background: #ffffff; padding: 22px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.04); border: 1px solid #edf2f7; margin-bottom: 26px;">
           <div style="margin-bottom: 14px;">
             <label style="display: block; font-size: 12px; font-weight: 600; color: #4a5568; margin-bottom: 6px;">Nama Lengkap</label>
-            <input type="text" id="senderName" placeholder="Masukkan Nama Anda" required style="width: 100%; padding: 11px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #2d3748; outline: none; box-sizing: border-box; transition: 0.2s;">
+            <input type="text" id="senderName" placeholder="Contoh: Budi Santoso" required style="width: 100%; padding: 11px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #2d3748; outline: none; box-sizing: border-box;">
           </div>
           
           <div style="margin-bottom: 14px;">
             <label style="display: block; font-size: 12px; font-weight: 600; color: #4a5568; margin-bottom: 6px;">Konfirmasi Kehadiran</label>
             <select id="attendanceStatus" style="width: 100%; padding: 11px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #2d3748; outline: none; box-sizing: border-box; background-color: #fff; cursor: pointer;">
-              <option value="Hadir">Hadir</option>
-              <option value="Akan Hadir">Masih Ragu / Akan Diusahakan</option>
-              <option value="Tidak Hadir">Maaf, Berhalangan Hadir</option>
+              <option value="Hadir">✨ Hadir</option>
+              <option value="Akan Hadir">⏳ Masih Ragu / Akan Diusahakan</option>
+              <option value="Tidak Hadir">🌸 Maaf, Berhalangan Hadir</option>
             </select>
           </div>
           
@@ -292,11 +293,10 @@
         </form>
       
         <!-- Container List Ucapan -->
-        <div id="commentsList" style="max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 4px;">
-          <!-- Pesan tamu otomatis terisi di sini -->
+        <div id="commentsList" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" style="max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 4px;">
+          <!-- Kartu ucapan akan muncul beranimasi di sini -->
         </div>
       </section>
-
 
       <!-- ==================== 10. FOOTER ==================== -->
       <footer class="footer-block text-center">
@@ -407,7 +407,8 @@
         const badgeBg = data.kehadiran === "Hadir" ? "#f0fff4" : (data.kehadiran === "Tidak Hadir" ? "#fff5f5" : "#fffff0");
   
         const card = document.createElement("div");
-        card.style.cssText = "background: #ffffff; border-radius: 14px; padding: 14px 18px; border: 1px solid #f0f2f5; box-shadow: 0 2px 8px rgba(0,0,0,0.03); margin-bottom: 8px;";
+        // Menambahkan animasi fade-in & slide-up saat render
+        card.style.cssText = "background: #ffffff; border-radius: 14px; padding: 14px 18px; border: 1px solid #f0f2f5; box-shadow: 0 2px 8px rgba(0,0,0,0.03); margin-bottom: 8px; animation: fadeInUp 0.4s ease-out forwards;";
         
         card.innerHTML = `
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
@@ -416,12 +417,12 @@
               ${data.kehadiran || "Hadir"}
             </span>
           </div>
-          <p style="font-size: 13px; color: #4a5568; margin: 0; line-height: 1.5; word-break: break-word;">
+          <div style="font-size: 13px; color: #4a5568; margin: 0; line-height: 1.5; word-break: break-word;">
             ${data.pesan || ""}
-          </p>
-          <div style="font-size: 11px; color: #a0aec0; margin-bottom: 8px;">
-            🕒 ${formatWaktu(data.timestamp)}
           </div>
+          <p style="font-size: 11px; color: #a0aec0; margin-bottom: 8px;">
+            🕒 ${formatWaktu(data.timestamp)}
+          </p>
         `;
         commentsList.appendChild(card);
       });
