@@ -423,12 +423,12 @@
                     ${data.kehadiran || "Hadir"}
                   </span>
                 </div>
-                <div style="font-size: 11px; color: #a0aec0; margin-bottom: 6px;">
-                  🕒 ${formatWaktu(data.timestamp)}
-                </div>
                 <p style="font-size: 13px; color: #4a5568; margin: 0; line-height: 1.45; word-break: break-word;">
                   ${data.pesan || ""}
                 </p>
+                <div style="font-size: 11px; color: #a0aec0; margin-bottom: 6px;">
+                  🕒 ${formatWaktu(data.timestamp)}
+                </div>
               </div>
             `;
             commentsList.appendChild(card);
