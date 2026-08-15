@@ -1,10 +1,12 @@
 :root {
-  --primary-maroon: #7e2d40;
-  --maroon-dark: #581d2a;
-  --bg-cream: #faf6f0;
-  --text-dark: #3a3a3a;
-  --text-muted: #7d7d7d;
+  --primary-green: #2d5a43;       /* Hijau Emerald / Forest */
+  --green-dark: #1e3d2d;          /* Hijau Gelap */
+  --green-soft: #4a7c59;          /* Hijau Sage / Soft */
+  --bg-cream: #f4f7f4;            /* Background Lembut Hijau Pucat */
   --card-bg: #ffffff;
+  --accent-gold: #c29b38;         /* Aksen Emas Lembut */
+  --text-dark: #233128;
+  --text-muted: #6b7c72;
 }
 
 * {
@@ -19,7 +21,7 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #2b2b2b;
+  background-color: #1a241e;
   color: var(--text-dark);
   display: flex;
   justify-content: center;
@@ -48,16 +50,16 @@ body.lock-scroll {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 45px 20px 35px;
   background: 
-    radial-gradient(circle at top, rgba(126, 45, 64, 0.85) 0%, rgba(126, 45, 64, 0.15) 55%, transparent 70%),
+    radial-gradient(circle at top, rgba(45, 90, 67, 0.88) 0%, rgba(74, 124, 89, 0.25) 55%, transparent 75%),
     url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80') bottom/cover no-repeat;
-  background-color: #fcf8f2;
+  background-color: #f1f6f2;
 }
 
-/* Membatasi Ukuran Foto Oval */
+/* Frame Foto Oval */
 .cover-photo-wrapper {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .photo-oval {
@@ -65,8 +67,8 @@ body.lock-scroll {
   height: 240px;
   border-radius: 50% / 40%;
   overflow: hidden;
-  border: 5px solid #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(35, 49, 40, 0.25);
   margin: 0 auto;
 }
 
@@ -77,12 +79,12 @@ body.lock-scroll {
   display: block;
 }
 
-/* Inisial & Nama Pasangan */
+/* Inisial Nama di Cover */
 .couple-initials {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin: 15px 0;
+  gap: 35px;
+  margin: 12px 0;
 }
 
 .initial-box {
@@ -93,34 +95,34 @@ body.lock-scroll {
 
 .script-init {
   font-family: 'Cinzel', serif;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   line-height: 1;
-  color: #3b3a36;
+  color: var(--green-dark);
 }
 
 .name-label {
   font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  color: #555;
+  font-size: 1.05rem;
+  letter-spacing: 1.5px;
+  color: var(--primary-green);
   margin-top: 4px;
 }
 
-/* Area Tamu */
+/* Tamu Undangan */
 .guest-section {
   margin: 10px 0;
 }
 
 .guest-to {
-  font-size: 0.9rem;
-  color: #555555;
+  font-size: 0.88rem;
+  color: #4a5a50;
 }
 
 .guest-title {
   font-size: 1.35rem;
   font-weight: 700;
   font-style: italic;
-  color: #222222;
+  color: #17241d;
   margin: 6px 0;
 }
 
@@ -130,17 +132,17 @@ body.lock-scroll {
   color: var(--text-muted);
 }
 
-/* Tombol Buka Undangan */
+/* Tombol Hijau Elegan */
 .btn-open-scroll {
-  background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-dark));
+  background: linear-gradient(135deg, var(--primary-green), var(--green-dark));
   color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  padding: 12px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 12px 30px;
   font-size: 0.95rem;
   font-weight: 600;
   border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(126, 45, 64, 0.4);
+  box-shadow: 0 6px 20px rgba(45, 90, 67, 0.4);
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
@@ -149,19 +151,20 @@ body.lock-scroll {
 
 .btn-open-scroll:hover {
   transform: scale(1.04);
+  background: linear-gradient(135deg, var(--green-soft), var(--primary-green));
 }
 
 /* === MAIN CONTENT === */
 .section {
-  padding: 60px 24px;
+  padding: 55px 24px;
   text-align: center;
 }
 
 .script-title {
   font-family: 'Alex Brush', cursive;
-  font-size: 3rem;
-  color: var(--primary-maroon);
-  margin-bottom: 10px;
+  font-size: 3.2rem;
+  color: var(--primary-green);
+  margin-bottom: 8px;
 }
 
 .section-sub {
@@ -173,8 +176,8 @@ body.lock-scroll {
 
 .name-text {
   font-family: 'Cinzel', serif;
-  font-size: 1.5rem;
-  color: var(--text-dark);
+  font-size: 1.45rem;
+  color: var(--green-dark);
 }
 
 .parent-text {
@@ -185,14 +188,14 @@ body.lock-scroll {
 
 .and-sym {
   font-family: 'Alex Brush', cursive;
-  font-size: 2.5rem;
-  color: var(--primary-maroon);
+  font-size: 2.6rem;
+  color: var(--accent-gold);
   margin: 10px 0;
 }
 
 .divider {
   border: none;
-  border-top: 1px dashed #d5c8be;
+  border-top: 1px dashed #b5c7bc;
   width: 75%;
   margin: 0 auto;
 }
@@ -202,14 +205,14 @@ body.lock-scroll {
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  border: 1px solid #ebdcd3;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid #d2e0d7;
 }
 
 .event-card h4 {
   font-family: 'Cinzel', serif;
-  color: var(--primary-maroon);
-  font-size: 1.2rem;
+  color: var(--primary-green);
+  font-size: 1.25rem;
   margin-bottom: 12px;
 }
 
@@ -221,19 +224,24 @@ body.lock-scroll {
 .btn-maps {
   display: inline-block;
   margin-top: 14px;
-  padding: 8px 20px;
-  background-color: var(--primary-maroon);
+  padding: 8px 22px;
+  background-color: var(--primary-green);
   color: #ffffff;
   text-decoration: none;
   font-size: 0.85rem;
   border-radius: 20px;
+  transition: 0.3s;
+}
+
+.btn-maps:hover {
+  background-color: var(--green-dark);
 }
 
 footer {
   text-align: center;
   padding: 40px 20px;
-  background: #1f1f1f;
-  color: #999999;
+  background: #142018;
+  color: #8c9e93;
   font-size: 0.85rem;
 }
 
