@@ -5,102 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Wedding of Kila & Dona</title>
   
-  <!-- Fonts & Icons -->
+  <!-- Font & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Panggil CSS dengan version query agar ter-update instan -->
-  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <link rel="stylesheet" href="css/style.css?v=4.0">
 </head>
 <body class="lock-scroll">
 
   <div class="mobile-container">
     
-    <!-- COVER SECTION -->
-    <section id="cover" class="cover-section">
-      <div class="cover-photo-wrapper">
+    <!-- COVER SCREEN (Persis Mehnikah) -->
+    <section id="cover" class="cover-wrapper">
+      
+      <!-- Frame Foto Oval -->
+      <div class="photo-frame-container">
         <div class="photo-oval">
-          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=500&q=80" alt="Kila & Dona" id="coverImg">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=500&q=80" alt="Kila & Dona">
         </div>
       </div>
 
-      <div class="couple-initials">
-        <div class="initial-box">
-          <span class="script-init">K</span>
-          <p class="name-label">Kila</p>
+      <!-- Inisial Huruf Besar -->
+      <div class="initials-container">
+        <div class="initial-item">
+          <span class="big-serif">K</span>
+          <p class="name-sub">Kila</p>
         </div>
-        <div class="initial-box">
-          <span class="script-init">D</span>
-          <p class="name-label">Dona</p>
+        <div class="initial-item">
+          <span class="big-serif">D</span>
+          <p class="name-sub">Dona</p>
         </div>
       </div>
 
-      <div class="guest-section">
-        <p class="guest-to">Kepada Bapak/Ibu/Saudara/i</p>
-        <h3 id="guestName" class="guest-title">Tamu Undangan</h3>
-        <p class="guest-note">*) Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar</p>
+      <!-- Card Tamu Undangan -->
+      <div class="guest-card-mehnikah">
+        <p class="guest-label">Kepada Bapak/Ibu/Saudara/i</p>
+        <h3 id="guestName" class="guest-target">Kila & Partner</h3>
+        <p class="guest-disclaimer">*) Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar</p>
       </div>
 
-      <div class="btn-container">
-        <button type="button" class="btn-open-scroll" onclick="openAndScroll()">
+      <!-- Tombol Buka Undangan -->
+      <div class="btn-box">
+        <button type="button" class="btn-mehnikah" onclick="openAndScroll()">
           <i class="fa-solid fa-book-open"></i> Buka Undangan
         </button>
       </div>
+
+      <!-- Ornamen Daun / Bunga Bawah -->
+      <div class="bottom-floral"></div>
     </section>
 
-    <!-- MAIN CONTENT -->
+    <!-- KONTEN UTAMA (Setelah di-scroll) -->
     <main id="main-content">
-      <section class="section">
-        <h2 class="script-title">Salam Bahagia</h2>
-        <p class="section-sub">Tanpa mengurangi rasa hormat, kami bermaksud mengundang Anda untuk menghadiri acara pernikahan kami:</p>
+      
+      <!-- Section Salam & Mempelai -->
+      <section class="section-content text-center">
+        <p class="greeting-lead">THE WEDDING OF</p>
+        <h2 class="script-couple">Kila & Dona</h2>
+        <p class="quote-text">
+          "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya."<br>
+          <strong>(QS. Ar-Rum: 21)</strong>
+        </p>
 
-        <div class="couple-detail">
-          <h3 class="name-text">Kila Septiani</h3>
-          <p class="parent-text">Putri tercinta dari Bpk. Fulan & Ibu Fulanah</p>
+        <div class="bride-groom-box">
+          <h3 class="person-name">Kila Septiani</h3>
+          <p class="person-bio">Putri dari Pasangan Bpk. Fulan & Ibu Fulanah</p>
           
-          <div class="and-sym">&</div>
+          <div class="and-divider">&</div>
           
-          <h3 class="name-text">Dona Pratama</h3>
-          <p class="parent-text">Putra tercinta dari Bpk. Fulan & Ibu Fulanah</p>
+          <h3 class="person-name">Dona Pratama</h3>
+          <p class="person-bio">Putra dari Pasangan Bpk. Fulan & Ibu Fulanah</p>
         </div>
       </section>
 
-      <hr class="divider">
-
-      <section class="section">
-        <h2 class="script-title">Waktu & Lokasi</h2>
-        
-        <div class="event-card">
-          <h4>Akad Nikah</h4>
-          <p><i class="fa-regular fa-calendar-days"></i> Sabtu, 28 November 2026</p>
-          <p><i class="fa-regular fa-clock"></i> 08.00 - 10.00 WIB</p>
-          <p><i class="fa-solid fa-location-dot"></i> Gedung Pernikahan Bahagia</p>
-          <a href="https://maps.google.com" target="_blank" class="btn-maps">Lihat Google Maps</a>
+      <!-- Section Acara -->
+      <section class="section-content">
+        <div class="event-card-green">
+          <h3 class="event-type">Akad Nikah</h3>
+          <p class="event-date"><i class="fa-regular fa-calendar-check"></i> Sabtu, 28 November 2026</p>
+          <p class="event-time"><i class="fa-regular fa-clock"></i> 08.00 - 10.00 WIB</p>
+          <p class="event-loc"><i class="fa-solid fa-location-dot"></i> Gedung Pernikahan Harmoni</p>
+          <a href="https://maps.google.com" target="_blank" class="btn-location"><i class="fa-solid fa-map-pin"></i> Petunjuk Arah</a>
         </div>
 
-        <div class="event-card">
-          <h4>Resepsi Pernikahan</h4>
-          <p><i class="fa-regular fa-calendar-days"></i> Sabtu, 28 November 2026</p>
-          <p><i class="fa-regular fa-clock"></i> 11.00 - Selesai</p>
-          <p><i class="fa-solid fa-location-dot"></i> Gedung Pernikahan Bahagia</p>
-          <a href="https://maps.google.com" target="_blank" class="btn-maps">Lihat Google Maps</a>
+        <div class="event-card-green">
+          <h3 class="event-type">Resepsi</h3>
+          <p class="event-date"><i class="fa-regular fa-calendar-check"></i> Sabtu, 28 November 2026</p>
+          <p class="event-time"><i class="fa-regular fa-clock"></i> 11.00 - Selesai</p>
+          <p class="event-loc"><i class="fa-solid fa-location-dot"></i> Gedung Pernikahan Harmoni</p>
+          <a href="https://maps.google.com" target="_blank" class="btn-location"><i class="fa-solid fa-map-pin"></i> Petunjuk Arah</a>
         </div>
       </section>
 
-      <footer>
+      <!-- Footer -->
+      <footer class="footer-mehnikah">
         <p class="script-footer">Kila & Dona</p>
-        <p>Terima kasih atas kehadiran & doa restunya.</p>
+        <p class="closing-text">Sampai jumpa di hari bahagia kami!</p>
       </footer>
     </main>
 
   </div>
 
-  <audio id="bgMusic" loop>
-    <source src="audio/background.mp3" type="audio/mp3">
-  </audio>
-
-  <script src="js/script.js?v=3.0"></script>
+  <script src="js/script.js?v=4.0"></script>
 </body>
 </html>
