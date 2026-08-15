@@ -5,29 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Wedding of Kila & Dona</title>
   
-  <!-- Font & Icons -->
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Panggil CSS -->
-  <link rel="stylesheet" href="css/style.css?v=2.0">
+  <!-- Panggil CSS dengan version query agar ter-update instan -->
+  <link rel="stylesheet" href="css/style.css?v=3.0">
 </head>
 <body class="lock-scroll">
 
   <div class="mobile-container">
     
-    <!-- COVER SECTION (100vh) -->
+    <!-- COVER SECTION -->
     <section id="cover" class="cover-section">
-      <!-- Frame Foto Oval -->
       <div class="cover-photo-wrapper">
         <div class="photo-oval">
           <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=500&q=80" alt="Kila & Dona" id="coverImg">
         </div>
       </div>
 
-      <!-- Inisial & Nama Pasangan di Cover -->
       <div class="couple-initials">
         <div class="initial-box">
           <span class="script-init">K</span>
@@ -39,14 +37,12 @@
         </div>
       </div>
 
-      <!-- Nama Tamu Undangan (Dinamis dari URL ?to=...) -->
       <div class="guest-section">
         <p class="guest-to">Kepada Bapak/Ibu/Saudara/i</p>
         <h3 id="guestName" class="guest-title">Tamu Undangan</h3>
         <p class="guest-note">*) Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar</p>
       </div>
 
-      <!-- Tombol Buka Undangan -->
       <div class="btn-container">
         <button type="button" class="btn-open-scroll" onclick="openAndScroll()">
           <i class="fa-solid fa-book-open"></i> Buka Undangan
@@ -54,7 +50,7 @@
       </div>
     </section>
 
-    <!-- MAIN CONTENT (Dituju saat scroll otomatis) -->
+    <!-- MAIN CONTENT -->
     <main id="main-content">
       <section class="section">
         <h2 class="script-title">Salam Bahagia</h2>
@@ -101,12 +97,10 @@
 
   </div>
 
-  <!-- Audio Musik Latar (Opsional) -->
   <audio id="bgMusic" loop>
     <source src="audio/background.mp3" type="audio/mp3">
   </audio>
 
-  <!-- Panggil JS -->
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=3.0"></script>
 </body>
 </html>
