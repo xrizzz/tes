@@ -154,3 +154,32 @@ function copyText(elementId) {
     });
   }
 }
+
+// ========================================================
+// FUNGSI BUKA UNDANGAN TERBARU (TARUH PALING BAWAH)
+// ========================================================
+function openInvitation() {
+  document.body.classList.remove("lock-scroll");
+  document.documentElement.classList.remove("lock-scroll");
+
+  const mainSection = document.getElementById("main-content");
+  if (mainSection) {
+    mainSection.scrollIntoView({ behavior: "smooth" });
+  }
+
+  if (typeof music !== "undefined" && music) {
+    music.play().then(() => {
+      if (typeof musicIcon !== "undefined" && musicIcon) {
+        musicIcon.classList.add("fa-spin");
+      }
+    }).catch((err) => {
+      console.log("Autoplay dicegah:", err);
+    });
+  }
+
+  setTimeout(() => {
+    if (typeof AOS !== "undefined") {
+      AOS.refresh();
+    }
+  }, 500);
+}
