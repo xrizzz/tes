@@ -357,3 +357,29 @@ function openInvitation() {
     if (typeof AOS !== "undefined") AOS.refresh();
   }, 800);
 }
+
+snapshot.forEach((doc) => {
+      const data = doc.data();
+      const nama = data.nama || "Tamu Undangan";
+      const badgeColor = data.kehadiran === "Hadir" ? "#2f855a" : (data.kehadiran === "Tidak Hadir" ? "#c53030" : "#d69e2e");
+      const badgeBg = data.kehadiran === "Hadir" ? "#f0fff4" : (data.kehadiran === "Tidak Hadir" ? "#fff5f5" : "#fffff0");
+
+      const card = document.createElement("div");
+      card.style.cssText = "background: #ffffff; border-radius: 14px; padding: 14px 18px; border: 1px solid #f0f2f5; box-shadow: 0 2px 8px rgba(0,0,0,0.03); margin-bottom: 8px;";
+      
+      card.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <div style="font-weight: 600; font-size: 14px; color: #2d3748;">${nama}</div>
+          <span style="font-size: 11px; font-weight: 600; color: ${badgeColor}; background: ${badgeBg}; padding: 2px 10px; border-radius: 20px; border: 1px solid ${badgeColor}33;">
+            ${data.kehadiran || "Hadir"}
+          </span>
+        </div>
+        <div style="font-size: 11px; color: #a0aec0; margin-bottom: 8px;">
+          🕒 ${formatWaktu(data.timestamp)}
+        </div>
+        <p style="font-size: 13px; color: #4a5568; margin: 0; line-height: 1.5; word-break: break-word;">
+          ${data.pesan || ""}
+        </p>
+      `;
+      commentsList.appendChild(card);
+    });
