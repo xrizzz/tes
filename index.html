@@ -322,118 +322,110 @@
   <!-- Script Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="js/script.js?v=6.0"></script>
-  <!-- Firebase Script Modular & Real-Time Timeago -->
+
+  <!-- Script Firebase Tanpa Avatar -->
   <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyD3WEg-Psj7FEsR3T2X6aqKiebtbYMRdRQ",
+      authDomain: "wedding-kila-dona.firebaseapp.com",
+      projectId: "wedding-kila-dona",
+      storageBucket: "wedding-kila-dona.firebasestorage.app",
+      messagingSenderId: "850294560730",
+      appId: "1:850294560730:web:9702cef1da86ada56ed2e3",
+      measurementId: "G-18MRDD3MJX"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const ucapanCollection = collection(db, "ucapan");
+  
+    function formatWaktu(timestamp) {
+      if (!timestamp) return "Baru saja";
+      const sekarang = new Date();
+      const waktuPesan = timestamp.toDate();
+      const selisihDetik = Math.floor((sekarang - waktuPesan) / 1000);
+  
+      if (selisihDetik < 60) return "Baru saja";
+      const selisihMenit = Math.floor(selisihDetik / 60);
+      if (selisihMenit < 60) return `${selisihMenit} menit yang lalu`;
+      const selisihJam = Math.floor(selisihMenit / 60);
+      if (selisihJam < 24) return `${selisihJam} jam yang lalu`;
+      const selisihHari = Math.floor(selisihJam / 24);
+      if (selisihHari < 30) return `${selisihHari} hari yang lalu`;
       
-        const firebaseConfig = {
-          apiKey: "AIzaSyD3WEg-Psj7FEsR3T2X6aqKiebtbYMRdRQ",
-          authDomain: "wedding-kila-dona.firebaseapp.com",
-          projectId: "wedding-kila-dona",
-          storageBucket: "wedding-kila-dona.firebasestorage.app",
-          messagingSenderId: "850294560730",
-          appId: "1:850294560730:web:9702cef1da86ada56ed2e3",
-          measurementId: "G-18MRDD3MJX"
-        };
-      
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const ucapanCollection = collection(db, "ucapan");
-      
-        // Fungsi Konversi Waktu Real-Time (Time Ago)
-        function formatWaktu(timestamp) {
-          if (!timestamp) return "Baru saja";
-          const sekarang = new Date();
-          const waktuPesan = timestamp.toDate();
-          const selisihDetik = Math.floor((sekarang - waktuPesan) / 1000);
-      
-          if (selisihDetik < 60) return "Baru saja";
-          const selisihMenit = Math.floor(selisihDetik / 60);
-          if (selisihMenit < 60) return `${selisihMenit} menit yang lalu`;
-          const selisihJam = Math.floor(selisihMenit / 60);
-          if (selisihJam < 24) return `${selisihJam} jam yang lalu`;
-          const selisihHari = Math.floor(selisihJam / 24);
-          if (selisihHari < 30) return `${selisihHari} hari yang lalu`;
-          
-          return waktuPesan.toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
-        }
-      
-        // Kirim Ucapan
-        const form = document.getElementById("ucapanForm");
-        const btnKirim = document.getElementById("btnKirimUcapan");
-      
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const nama = document.getElementById("senderName").value.trim();
-          const kehadiran = document.getElementById("attendanceStatus").value;
-          const pesan = document.getElementById("senderMessage").value.trim();
-      
-          if (!nama || !pesan) return;
-      
-          btnKirim.disabled = true;
-          btnKirim.innerText = "Mengirim...";
-      
-          try {
-            await addDoc(ucapanCollection, {
-              nama: nama,
-              kehadiran: kehadiran,
-              pesan: pesan,
-              timestamp: serverTimestamp()
-            });
-            form.reset();
-          } catch (err) {
-            console.error("Gagal mengirim:", err);
-            alert("Maaf, terjadi kesalahan.");
-          } finally {
-            btnKirim.disabled = false;
-            btnKirim.innerText = "Kirim Ucapan";
-          }
+      return waktuPesan.toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+    }
+  
+    const form = document.getElementById("ucapanForm");
+    const btnKirim = document.getElementById("btnKirimUcapan");
+  
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nama = document.getElementById("senderName").value.trim();
+      const kehadiran = document.getElementById("attendanceStatus").value;
+      const pesan = document.getElementById("senderMessage").value.trim();
+  
+      if (!nama || !pesan) return;
+  
+      btnKirim.disabled = true;
+      btnKirim.innerText = "Mengirim...";
+  
+      try {
+        await addDoc(ucapanCollection, {
+          nama: nama,
+          kehadiran: kehadiran,
+          pesan: pesan,
+          timestamp: serverTimestamp()
         });
-      
-        // Tampilkan Ucapan
-        const commentsList = document.getElementById("commentsList");
-        const q = query(ucapanCollection, orderBy("timestamp", "desc"));
-      
-        onSnapshot(q, (snapshot) => {
-          commentsList.innerHTML = "";
-          if (snapshot.empty) {
-            commentsList.innerHTML = `<div style="text-align: center; color: #a0aec0; font-size: 13px; padding: 20px;">Belum ada ucapan. Jadilah yang pertama memberikan doa!</div>`;
-            return;
-          }
-      
-          snapshot.forEach((doc) => {
-            const data = doc.data();
-            const nama = data.nama || "Tamu Undangan";
-            const inisial = nama.charAt(0).toUpperCase();
-            const badgeColor = data.kehadiran === "Hadir" ? "#2f855a" : (data.kehadiran === "Tidak Hadir" ? "#c53030" : "#d69e2e");
-            const badgeBg = data.kehadiran === "Hadir" ? "#f0fff4" : (data.kehadiran === "Tidak Hadir" ? "#fff5f5" : "#fffff0");
-      
-            const card = document.createElement("div");
-            card.style.cssText = "background: #ffffff; border-radius: 14px; padding: 14px 16px; border: 1px solid #f0f2f5; box-shadow: 0 2px 8px rgba(0,0,0,0.03); display: flex; gap: 12px; align-items: flex-start;";
-            
-            card.innerHTML = `
-              <div style="width: 36px; height: 36px; border-radius: 50%; background-color: #606c38; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; flex-shrink: 0;">
-                ${inisial}
-              </div>
-              <div style="flex-grow: 1;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                  <div style="font-weight: 600; font-size: 13px; color: #2d3748;">${nama}</div>
-                  <span style="font-size: 11px; font-weight: 600; color: ${badgeColor}; background: ${badgeBg}; padding: 2px 8px; border-radius: 20px; border: 1px solid ${badgeColor}33;">
-                    ${data.kehadiran || "Hadir"}
-                  </span>
-                </div>
-                <p style="font-size: 13px; color: #4a5568; margin: 0; line-height: 1.45; word-break: break-word;">
-                  ${data.pesan || ""}
-                </p>
-                <div style="font-size: 11px; color: #a0aec0; margin-bottom: 6px;">
-                  🕒 ${formatWaktu(data.timestamp)}
-                </div>
-              </div>
-            `;
-            commentsList.appendChild(card);
-          });
-        });
-      </script>
+        form.reset();
+      } catch (err) {
+        console.error("Gagal mengirim:", err);
+        alert("Maaf, terjadi kesalahan.");
+      } finally {
+        btnKirim.disabled = false;
+        btnKirim.innerText = "Kirim Ucapan";
+      }
+    });
+  
+    const commentsList = document.getElementById("commentsList");
+    const q = query(ucapanCollection, orderBy("timestamp", "desc"));
+  
+    onSnapshot(q, (snapshot) => {
+      commentsList.innerHTML = "";
+      if (snapshot.empty) {
+        commentsList.innerHTML = `<div style="text-align: center; color: #a0aec0; font-size: 13px; padding: 20px;">Belum ada ucapan. Jadilah yang pertama memberikan doa!</div>`;
+        return;
+      }
+  
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const nama = data.nama || "Tamu Undangan";
+        const badgeColor = data.kehadiran === "Hadir" ? "#2f855a" : (data.kehadiran === "Tidak Hadir" ? "#c53030" : "#d69e2e");
+        const badgeBg = data.kehadiran === "Hadir" ? "#f0fff4" : (data.kehadiran === "Tidak Hadir" ? "#fff5f5" : "#fffff0");
+  
+        const card = document.createElement("div");
+        card.style.cssText = "background: #ffffff; border-radius: 14px; padding: 14px 18px; border: 1px solid #f0f2f5; box-shadow: 0 2px 8px rgba(0,0,0,0.03); margin-bottom: 8px;";
+        
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <div style="font-weight: 600; font-size: 14px; color: #2d3748;">${nama}</div>
+            <span style="font-size: 11px; font-weight: 600; color: ${badgeColor}; background: ${badgeBg}; padding: 2px 10px; border-radius: 20px; border: 1px solid ${badgeColor}33;">
+              ${data.kehadiran || "Hadir"}
+            </span>
+          </div>
+          <div style="font-size: 11px; color: #a0aec0; margin-bottom: 8px;">
+            🕒 ${formatWaktu(data.timestamp)}
+          </div>
+          <p style="font-size: 13px; color: #4a5568; margin: 0; line-height: 1.5; word-break: break-word;">
+            ${data.pesan || ""}
+          </p>
+        `;
+        commentsList.appendChild(card);
+      });
+    });
+  </script>
 </body>
 </html>
