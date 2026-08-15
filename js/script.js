@@ -1,3 +1,4 @@
+// Mengambil Parameter Nama Tamu (?to=Nama+Tamu)
 const urlParams = new URLSearchParams(window.location.search);
 const guestParam = urlParams.get('to');
 if (guestParam) {
@@ -7,18 +8,12 @@ if (guestParam) {
   }
 }
 
+// Fungsi Buka Undangan & Scroll Otomatis
 function openAndScroll() {
   document.body.classList.remove('lock-scroll');
 
-  const mainContent = document.getElementById('main-content');
-  if (mainContent) {
-    mainContent.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  const music = document.getElementById('bgMusic');
-  if (music) {
-    music.play().catch(function(error) {
-      console.log('Autoplay audio ditahan browser:', error);
-    });
+  const mainSection = document.getElementById('main-content');
+  if (mainSection) {
+    mainSection.scrollIntoView({ behavior: 'smooth' });
   }
 }
