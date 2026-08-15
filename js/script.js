@@ -116,3 +116,30 @@ function submitWish(event) {
   document.getElementById("senderMsg").value = "";
   alert("Terima kasih banyak atas ucapan dan doa restunya!");
 }
+
+// Variabel untuk mencatat apakah musik sempat berputar sebelum pindah tab
+let wasPlayingBeforeLeave = false;
+
+// Event saat pengguna berpindah tab, minimize browser, atau keluar sementara
+document.addEventListener("visibilitychange", function () {
+  if (!music) return;
+
+  if (document.hidden) {
+    // Jika tab disembunyikan/ditinggalkan
+    if (!music.paused) {
+      wasPlayingBeforeLeave = true;
+      music.pause();
+      if (musicIcon) musicIcon.classList.remove("fa-spin");
+    }
+  } else {
+    // Jika pengguna kembali lagi membuka tab undangan
+    if (wasPlayingBeforeLeave && !document.body.classList.contains("lock-scroll")) {
+      music.play().then(() => {
+        if (musicIcon) musicIcon.classList.add("fa-spin");
+      }).catch((err) => {
+        console.log("Gagal memutar audio otomatis saat kembali:", err);
+      });
+      wasPlayingBeforeLeave = false;
+    }
+  }
+});
