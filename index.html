@@ -209,18 +209,52 @@
         </div>
       </section>
 
-      <!-- ==================== 7. AMPLOP DIGITAL (TANDA KASIH) ==================== -->
+      <!-- === 7. AMPLOP DIGITAL (DESAIN KARTU ATM / E-WALLET) === -->
       <section id="gift" class="section-block text-center bg-soft">
         <h2 class="section-title" data-aos="fade-up">Tanda Kasih</h2>
-        <p class="section-desc" data-aos="fade-up">Doa restu Anda adalah karunia terindah. Namun jika ingin memberikan tanda kasih secara digital, Anda dapat melalui rekening berikut :</p>
-      </section>
-
-      <div class="gift-card" data-aos="fade-up">
-          <div class="bank-logo">DANA</div>
-          <p class="bank-num" id="bcaAcc">083133720739</p>
-          <p class="bank-name">a.n. Fitri Sakila Siregar</p>
-          <button class="btn-copy" onclick="copyText('bcaAcc')"><i class="fa-regular fa-copy"></i> Salin Nomor Rekening</button>
+        <p class="section-desc" data-aos="fade-up">
+          Doa restu Anda adalah karunia terindah. Namun jika ingin memberikan tanda kasih secara digital, Anda dapat melalui rekening berikut:
+        </p>
+      
+        <!-- KARTU DANA EM-WALLET / ATM STYLE -->
+        <div class="atm-card dana-card" data-aos="zoom-in">
+          <div class="card-inner">
+            <!-- Header Kartu: Chip & Logo DANA -->
+            <div class="card-header">
+              <div class="chip-wireless">
+                <div class="atm-chip"></div>
+                <i class="fa-solid fa-wifi wifi-icon"></i>
+              </div>
+              <div class="brand-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="Logo DANA" class="dana-img-logo">
+              </div>
+            </div>
+      
+            <!-- Nomor Akun / Nomor DANA -->
+            <div class="card-body-num">
+              <p class="card-num-label">Nomor Akun / E-Wallet</p>
+              <h3 class="card-number" id="danaAcc">0831 3372 0739</h3>
+            </div>
+      
+            <!-- Footer Kartu: Nama Pemilik & Tanggal Valid -->
+            <div class="card-footer">
+              <div class="holder-info">
+                <span class="holder-label">CARD HOLDER</span>
+                <p class="holder-name">FITRI SAKILA SIREGAR</p>
+              </div>
+              <div class="valid-info">
+                <span class="valid-label">VALID THRU</span>
+                <p class="valid-date">11/28</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Tombol Salin di Bawah Kartu -->
+          <button type="button" class="btn-copy-atm" onclick="copyText('danaAcc')">
+            <i class="fa-regular fa-copy"></i> Salin Nomor DANA
+          </button>
         </div>
+      </section>
 
       <!-- ==================== 8. LIVE RSVP & BUKU UCAPAN ==================== -->
       <section id="rsvp" class="section-block">
