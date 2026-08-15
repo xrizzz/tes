@@ -141,33 +141,66 @@ body.lock-scroll {
   object-fit: cover;
 }
 
-.initials-box {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 15px;
+/* Container Inisial Bertingkat Diagonal */
+.initials-overlap-container {
+  position: relative;
+  width: 220px;
+  height: 130px;
+  margin: 15px auto 25px auto;
 }
 
-.init-item {
+.init-group {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.init-letter {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.4rem;
-  line-height: 1;
-  color: var(--sage-dark);
+/* Huruf K di Kiri Atas */
+.group-k {
+  top: 0;
+  left: 10px;
+  z-index: 1;
 }
 
-.init-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  color: var(--sage-main);
-  margin-top: 2px;
+/* Huruf D di Kanan Bawah */
+.group-d {
+  bottom: 0;
+  right: 10px;
+  z-index: 2;
 }
 
+/* Huruf Besar */
+.init-big {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 3.8rem;
+  line-height: 0.85;
+  color: var(--sage-dark, #1b3829);
+  font-weight: 700;
+}
+
+/* Nama Kecil di Bawah Huruf */
+.init-small {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--sage-main, #2d5a43);
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Simbol & Melayang Tepat di Tengah */
+.init-center-amp {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.8rem;
+  color: var(--gold-accent, #c49a45);
+  z-index: 3;
+  opacity: 0.9;
+  pointer-events: none;
+}
 .guest-box {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
