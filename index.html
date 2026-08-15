@@ -330,5 +330,85 @@
   <!-- Script Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="js/script.js?v=6.0"></script>
+  <!-- Firebase SDK Modular -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  
+    // Konfigurasi Firebase dari proyek bos
+    const firebaseConfig = {
+      apiKey: "AIzaSyD3WEg-Psj7FEsR3T2X6aqKiebtbYMRdRQ",
+      authDomain: "wedding-kila-dona.firebaseapp.com",
+      projectId: "wedding-kila-dona",
+      storageBucket: "wedding-kila-dona.firebasestorage.app",
+      messagingSenderId: "850294560730",
+      appId: "1:850294560730:web:9702cef1da86ada56ed2e3",
+      measurementId: "G-18MRDD3MJX"
+    };
+  
+    // Inisialisasi Firebase & Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const ucapanCollection = collection(db, "ucapan");
+  
+    // 1. Logika Simpan Ucapan ke Firestore
+    const form = document.getElementById("ucapanForm");
+    const btnKirim = document.getElementById("btnKirimUcapan");
+  
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nama = document.getElementById("senderName").value.trim();
+      const kehadiran = document.getElementById("attendanceStatus").value;
+      const pesan = document.getElementById("senderMessage").value.trim();
+  
+      if (!nama || !pesan) return;
+  
+      btnKirim.disabled = true;
+      btnKirim.innerText = "Mengirim...";
+  
+      try {
+        await addDoc(ucapanCollection, {
+          nama: nama,
+          kehadiran: kehadiran,
+          pesan: pesan,
+          timestamp: serverTimestamp()
+        });
+        form.reset();
+      } catch (err) {
+        console.error("Gagal mengirim:", err);
+        alert("Maaf, terjadi kesalahan saat mengirim ucapan.");
+      } finally {
+        btnKirim.disabled = false;
+        btnKirim.innerText = "Kirim Ucapan";
+      }
+    });
+  
+    // 2. Logika Real-time Menampilkan Ucapan
+    const commentsList = document.getElementById("commentsList");
+    const q = query(ucapanCollection, orderBy("timestamp", "desc"));
+  
+    onSnapshot(q, (snapshot) => {
+      commentsList.innerHTML = "";
+      if (snapshot.empty) {
+        commentsList.innerHTML = `<p style="text-align: center; color: #888; font-size: 13px;">Belum ada ucapan. Jadilah yang pertama!</p>`;
+        return;
+      }
+  
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.style.cssText = "background: #fdfdfd; border-left: 4px solid #606c38; padding: 12px 14px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 8px;";
+        
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <strong style="font-size: 14px; color: #283618;">${data.nama || "Anonim"}</strong>
+            <span style="font-size: 11px; background: #dda15e; color: #fff; padding: 2px 8px; border-radius: 12px;">${data.kehadiran || "Hadir"}</span>
+          </div>
+          <p style="font-size: 13px; color: #444; margin: 4px 0 0 0; line-height: 1.4;">${data.pesan || ""}</p>
+        `;
+        commentsList.appendChild(card);
+      });
+    });
+  </script>
 </body>
 </html>
