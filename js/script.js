@@ -1,4 +1,4 @@
-/ 1. Ambil Nama Tamu
+// 1. Ambil Nama Tamu
 const urlParams = new URLSearchParams(window.location.search);
 const guestParam = urlParams.get('to');
 if (guestParam) {
