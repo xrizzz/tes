@@ -1217,3 +1217,45 @@ html:not(.lock-scroll) {
   transform: translateY(-100%) !important;
   transition: transform 0.6s ease-in-out, opacity 0.5s ease !important;
 }
+
+/* ========================================================
+   COVER ALIRAN NORMAL (TETAP ADA & SCROLL MULUS)
+   ======================================================== */
+
+/* Kembalikan cover ke posisi normal (tidak fixed & tidak hilang) */
+#cover.cover-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 20px 16px !important;
+  box-sizing: border-box !important;
+  z-index: 10 !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Kunci scroll saat awal buka web */
+html.lock-scroll,
+body.lock-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  touch-action: none;
+}
+
+/* Sembunyikan navbar bawah & tombol musik saat di cover awal */
+body.lock-scroll .bottom-nav,
+body.lock-scroll .music-floating-btn {
+  display: none !important;
+}
+
+/* Aturan scroll halus bawaan CSS */
+html {
+  scroll-behavior: smooth !important;
+}
