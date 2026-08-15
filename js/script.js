@@ -310,3 +310,50 @@ function openInvitation() {
     }
   }, 600);
 }
+
+// ========================================================
+// FUNGSI SCROLL SUPER MULUS (ANTI LOMPAT & COVER TETAP ADA)
+// ========================================================
+function openInvitation() {
+  // 1. Lepas semua kunci layar
+  document.body.classList.remove("lock-scroll");
+  document.documentElement.classList.remove("lock-scroll");
+  document.body.style.overflow = "auto";
+  document.documentElement.style.overflow = "auto";
+  
+  // 2. Paksa cover untuk TETAP TAMPIL (membatalkan perintah hilang sebelumnya)
+  const coverEl = document.getElementById("cover");
+  if (coverEl) {
+    coverEl.classList.remove("cover-hidden");
+    coverEl.style.display = "flex";
+    coverEl.style.opacity = "1";
+    coverEl.style.visibility = "visible";
+  }
+
+  // 3. Putar musik
+  if (typeof music !== "undefined" && music) {
+    music.play().then(() => {
+      if (typeof musicIcon !== "undefined" && musicIcon) {
+        musicIcon.classList.add("fa-spin");
+      }
+    }).catch(err => console.log(err));
+  }
+
+  // 4. Jeda 150ms agar Android mengatur layout, lalu meluncur mulus ke bawah
+  setTimeout(() => {
+    const targetSection = document.getElementById("main-content") || document.getElementById("couple");
+    if (targetSection) {
+      // Hitung posisi akurat agar scroll tidak melompat
+      const targetPos = targetSection.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: targetPos,
+        behavior: "smooth"
+      });
+    }
+  }, 150);
+
+  // 5. Muat ulang animasi setelah selesai meluncur
+  setTimeout(() => {
+    if (typeof AOS !== "undefined") AOS.refresh();
+  }, 800);
+}
