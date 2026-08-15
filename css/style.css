@@ -1,11 +1,13 @@
 :root {
-  --sage-main: #2d5a43;        /* Hijau Forest / Sage Pekat */
-  --sage-dark: #1b3829;        /* Hijau Gelap Tombol */
-  --sage-light: #527d65;       /* Hijau Lembut */
-  --bg-page: #f6f8f6;          /* Background Lembut */
-  --card-white: #ffffff;
-  --text-dark: #202b24;
-  --text-gray: #68796e;
+  --sage-dark: #1b3829;
+  --sage-main: #2d5a43;
+  --sage-medium: #457b5d;
+  --sage-light: #88a795;
+  --sage-bg: #f4f7f4;
+  --gold-accent: #c49a45;
+  --white: #ffffff;
+  --dark-text: #232b26;
+  --muted-text: #66756c;
 }
 
 * {
@@ -20,13 +22,12 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #141b16;
-  color: var(--text-dark);
+  background-color: #121814;
+  color: var(--dark-text);
   display: flex;
   justify-content: center;
 }
 
-/* Mengunci scroll di awal sebelum tombol ditekan */
 body.lock-scroll {
   overflow: hidden;
   height: 100vh;
@@ -34,122 +35,171 @@ body.lock-scroll {
 
 .mobile-container {
   width: 100%;
-  max-width: 460px;
-  background-color: var(--bg-page);
+  max-width: 480px;
+  background-color: #fafcfb;
   min-height: 100vh;
-  box-shadow: 0 0 35px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.45);
   position: relative;
+  padding-bottom: 70px;
 }
 
-/* === COVER PERSIS MEHNIKAH (TEMA HIJAU) === */
+.text-center {
+  text-align: center;
+}
+
+.bg-soft {
+  background-color: var(--sage-bg);
+}
+
+/* === FLOATING MUSIC BUTTON === */
+.music-floating-btn {
+  position: fixed;
+  bottom: 85px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background: var(--sage-dark);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 999;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+/* === BOTTOM NAVBAR === */
+.bottom-nav {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 440px;
+  background: rgba(27, 56, 41, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 35px;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 6px;
+  z-index: 998;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.nav-item {
+  color: #cad8ce;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.65rem;
+  gap: 2px;
+  transition: 0.2s;
+}
+
+.nav-item i {
+  font-size: 0.95rem;
+}
+
+.nav-item:hover, .nav-item:focus {
+  color: var(--white);
+}
+
+/* === COVER SECTION === */
 .cover-wrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
   text-align: center;
   padding: 40px 20px 30px;
   background: 
-    radial-gradient(circle at top, rgba(45, 90, 67, 0.75) 0%, rgba(82, 125, 101, 0.15) 55%, transparent 75%),
+    radial-gradient(circle at top, rgba(45, 90, 67, 0.85) 0%, rgba(69, 123, 93, 0.2) 55%, transparent 75%),
     #fafcfb;
   overflow: hidden;
 }
 
-/* Frame Foto Oval Mehnikah */
-.photo-frame-container {
-  margin-top: 15px;
-  z-index: 2;
-}
-
-.photo-oval {
+.photo-oval-frame {
   width: 175px;
   height: 235px;
   border-radius: 50% / 40%;
-  border: 4px solid #ffffff;
-  box-shadow: 0 10px 25px rgba(32, 43, 36, 0.25);
+  border: 4px solid var(--white);
+  box-shadow: 0 10px 25px rgba(27, 56, 41, 0.25);
   overflow: hidden;
-  margin: 0 auto;
+  margin: 0 auto 15px;
 }
 
-.photo-oval img {
+.photo-oval-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* Inisial Nama Pasangan */
-.initials-container {
+.initials-box {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin: 10px 0;
-  z-index: 2;
+  margin-bottom: 15px;
 }
 
-.initial-item {
+.init-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.big-serif {
+.init-letter {
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
+  font-size: 3.4rem;
   line-height: 1;
   color: var(--sage-dark);
 }
 
-.name-sub {
+.init-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  letter-spacing: 1.5px;
+  font-size: 1.05rem;
   color: var(--sage-main);
   margin-top: 2px;
 }
 
-/* Kotak Keterangan Tamu Undangan */
-.guest-card-mehnikah {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(5px);
+.guest-box {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
   padding: 14px 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(210, 225, 215, 0.8);
+  border-radius: 14px;
+  border: 1px solid rgba(196, 218, 203, 0.8);
   width: 90%;
-  z-index: 2;
+  margin: 0 auto 15px;
 }
 
-.guest-label {
+.guest-header {
   font-size: 0.85rem;
-  color: var(--text-gray);
+  color: var(--muted-text);
 }
 
-.guest-target {
-  font-size: 1.25rem;
+.guest-name {
+  font-size: 1.3rem;
   font-weight: 700;
   font-style: italic;
-  color: #1a251e;
+  color: var(--dark-text);
   margin: 4px 0;
 }
 
-.guest-disclaimer {
+.guest-note {
   font-size: 0.72rem;
   font-style: italic;
-  color: #839489;
+  color: #8c9e93;
 }
 
-/* Tombol Mehnikah Pill */
-.btn-box {
-  z-index: 2;
-  margin-top: 5px;
-}
-
-.btn-mehnikah {
+.btn-open-mehnikah {
   background: linear-gradient(135deg, var(--sage-main), var(--sage-dark));
-  color: #ffffff;
+  color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 12px 30px;
   font-size: 0.95rem;
@@ -160,132 +210,484 @@ body.lock-scroll {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-mehnikah:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(27, 56, 41, 0.45);
-}
-
-/* Ornamen Bawah */
-.bottom-floral {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80') bottom/cover no-repeat;
-  opacity: 0.25;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* === MAIN CONTENT === */
-.section-content {
-  padding: 60px 24px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.greeting-lead {
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  color: var(--text-gray);
-  margin-bottom: 6px;
-}
-
-.script-couple {
-  font-family: 'Alex Brush', cursive;
-  font-size: 3.4rem;
-  color: var(--sage-main);
-  margin-bottom: 15px;
-}
-
-.quote-text {
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--text-gray);
-  margin-bottom: 35px;
-}
-
-.person-name {
-  font-family: 'Cinzel', serif;
-  font-size: 1.45rem;
-  color: var(--sage-dark);
-}
-
-.person-bio {
-  font-size: 0.85rem;
-  color: var(--text-gray);
-  margin-top: 4px;
-}
-
-.and-divider {
-  font-family: 'Alex Brush', cursive;
-  font-size: 2.8rem;
-  color: var(--sage-light);
-  margin: 8px 0;
-}
-
-/* Kartu Acara */
-.event-card-green {
-  background: var(--card-white);
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  border: 1px solid #e1ece5;
-  text-align: center;
-}
-
-.event-type {
-  font-family: 'Cinzel', serif;
-  color: var(--sage-main);
-  font-size: 1.3rem;
-  margin-bottom: 12px;
-}
-
-.event-date, .event-time, .event-loc {
-  font-size: 0.9rem;
-  margin: 6px 0;
-  color: var(--text-dark);
-}
-
-.btn-location {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 8px 24px;
-  background-color: var(--sage-main);
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border-radius: 20px;
   transition: 0.2s;
 }
 
-.btn-location:hover {
-  background-color: var(--sage-dark);
+.btn-open-mehnikah:hover {
+  transform: scale(1.03);
 }
 
-/* Footer */
-.footer-mehnikah {
-  text-align: center;
-  padding: 40px 20px;
-  background: #141c17;
-  color: #8c9f93;
+/* === SECTION STYLING === */
+.section-block {
+  padding: 60px 24px;
 }
 
-.script-footer {
-  font-family: 'Alex Brush', cursive;
-  font-size: 2.4rem;
-  color: #ffffff;
+.tagline {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--muted-text);
   margin-bottom: 6px;
 }
 
-.closing-text {
+.script-head {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3.5rem;
+  color: var(--sage-main);
+  line-height: 1.1;
+}
+
+.ornament-divider {
+  color: var(--gold-accent);
+  font-size: 1.4rem;
+  margin: 10px 0 20px;
+}
+
+.quran-quote {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--muted-text);
+  margin-bottom: 10px;
+}
+
+.quran-surah {
+  color: var(--sage-dark);
+  font-size: 0.9rem;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: var(--sage-dark);
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 0.88rem;
+  color: var(--muted-text);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Mempelai Card */
+.couple-card {
+  margin: 20px 0;
+}
+
+.couple-img-frame {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 12px;
+  border: 4px solid var(--sage-medium);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.couple-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.couple-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.35rem;
+  color: var(--sage-dark);
+}
+
+.couple-parents {
   font-size: 0.85rem;
+  color: var(--muted-text);
+  margin: 6px 0 10px;
+}
+
+.btn-insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--sage-main);
+  text-decoration: none;
+  background: rgba(45, 90, 67, 0.08);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+.couple-and {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3rem;
+  color: var(--gold-accent);
+  margin: 10px 0;
+}
+
+/* Countdown */
+.countdown-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 35px;
+}
+
+.timer-box {
+  background: var(--white);
+  padding: 14px 6px;
+  border-radius: 12px;
+  border: 1px solid #dbe6de;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.timer-box span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--sage-main);
+}
+
+.timer-box label {
+  font-size: 0.75rem;
+  color: var(--muted-text);
+}
+
+/* Event Box */
+.event-box {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 30px 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.04);
+  border: 1px solid #dbe6de;
+}
+
+.event-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: var(--sage-main);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.event-date, .event-time, .event-loc-title {
+  font-size: 0.92rem;
+  margin: 6px 0;
+  color: var(--dark-text);
+}
+
+.event-loc-address {
+  font-size: 0.82rem;
+  color: var(--muted-text);
+  margin-bottom: 18px;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 22px;
+  background-color: var(--sage-main);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: 0.2s;
+}
+
+.btn-action:hover {
+  background-color: var(--sage-dark);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--sage-main);
+  border: 1px solid var(--sage-main);
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Timeline Love Story */
+.timeline {
+  position: relative;
+  padding: 10px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  height: 100%;
+  width: 2px;
+  background: #c7dbd0;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 25px;
+  padding-left: 45px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 14px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--sage-main);
+  border: 3px solid var(--white);
+}
+
+.timeline-content {
+  background: var(--white);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #dce8e0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.timeline-year {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--sage-main);
+  margin-bottom: 4px;
+}
+
+.timeline-content h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: var(--sage-dark);
+  margin-bottom: 6px;
+}
+
+.timeline-content p {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+  line-height: 1.5;
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 160px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Gift Cards */
+.gift-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 18px;
+  border: 1px solid #dce8e0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.bank-logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--sage-dark);
+}
+
+.bank-num {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 6px 0;
+  color: var(--sage-main);
+}
+
+.bank-name {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+  margin-bottom: 12px;
+}
+
+.btn-copy {
+  background: var(--sage-bg);
+  color: var(--sage-dark);
+  border: 1px solid #c9ded2;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-copy:hover {
+  background: var(--sage-main);
+  color: var(--white);
+}
+
+/* RSVP Form & Wishes */
+.rsvp-form {
+  background: var(--white);
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid #dbe6de;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--dark-text);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccdcd1;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 11px;
+  background: var(--sage-main);
+  color: var(--white);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-submit:hover {
+  background: var(--sage-dark);
+}
+
+.wishes-list {
+  max-height: 350px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wish-item {
+  background: var(--white);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #e1ece5;
+  text-align: left;
+}
+
+.wish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.badge-hadir {
+  background: #e1f5e8;
+  color: #1e7e34;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.badge-tidak {
+  background: #fde8e8;
+  color: #c81e1e;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.wish-text {
+  font-size: 0.85rem;
+  color: var(--dark-text);
+  line-height: 1.5;
+}
+
+.wish-time {
+  font-size: 0.72rem;
+  color: #94a39b;
+}
+
+/* Prokes */
+.prokes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.prokes-item {
+  background: var(--white);
+  padding: 15px 10px;
+  border-radius: 12px;
+  border: 1px solid #dce8e0;
+}
+
+.prokes-item i {
+  font-size: 1.6rem;
+  color: var(--sage-main);
+  margin-bottom: 6px;
+}
+
+.prokes-item p {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Footer */
+.footer-block {
+  padding: 40px 20px;
+  background: var(--sage-dark);
+  color: #a8bdb2;
+}
+
+.footer-script {
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.8rem;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.footer-thanks {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: #799484;
 }
