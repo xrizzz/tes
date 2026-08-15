@@ -222,3 +222,50 @@ function openInvitation() {
     }
   }, 400);
 }
+
+// ========================================================
+// FUNGSI BUKA UNDANGAN KHUSUS ANDROID & SEMUA PERANGKAT
+// ========================================================
+function openInvitation() {
+  // 1. Buka seluruh kunci scroll & touch
+  document.body.classList.remove("lock-scroll");
+  document.documentElement.classList.remove("lock-scroll");
+  document.body.style.overflow = "auto";
+  document.documentElement.style.overflow = "auto";
+  document.body.style.touchAction = "auto";
+
+  // 2. Hilangkan cover secara instan & tuntas
+  const coverEl = document.getElementById("cover");
+  if (coverEl) {
+    coverEl.classList.add("cover-hidden");
+    
+    // Paksa hilangkan elemen cover dari layer agar Android bisa di-scroll bebas
+    setTimeout(() => {
+      coverEl.style.display = "none";
+    }, 600);
+  }
+
+  // 3. Gulir ke bagian isi undangan
+  const mainSection = document.getElementById("main-content");
+  if (mainSection) {
+    mainSection.scrollIntoView({ behavior: "smooth" });
+  }
+
+  // 4. Putar musik
+  if (typeof music !== "undefined" && music) {
+    music.play().then(() => {
+      if (typeof musicIcon !== "undefined" && musicIcon) {
+        musicIcon.classList.add("fa-spin");
+      }
+    }).catch((err) => {
+      console.log("Audio autoplay:", err);
+    });
+  }
+
+  // 5. Refresh animasi AOS
+  setTimeout(() => {
+    if (typeof AOS !== "undefined") {
+      AOS.refresh();
+    }
+  }, 400);
+}
