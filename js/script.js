@@ -143,3 +143,14 @@ document.addEventListener("visibilitychange", function () {
     }
   }
 });
+
+function copyText(elementId) {
+  const targetEl = document.getElementById(elementId);
+  if (targetEl) {
+    // Hapus spasi agar nomor yang tersalin bersih (083133720739)
+    const cleanNumber = targetEl.innerText.replace(/\s+/g, '');
+    navigator.clipboard.writeText(cleanNumber).then(() => {
+      alert("Nomor DANA berhasil disalin: " + cleanNumber);
+    });
+  }
+}
