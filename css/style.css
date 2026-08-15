@@ -1022,3 +1022,76 @@ body.lock-scroll {
     height: 100vh !important;
   }
 }
+
+/* ========================================================
+   FIX KHUSUS IPHONE / SAFARI IOS (TARUH PALING BAWAH)
+   ======================================================== */
+
+/* Gunakan 100dvh (Dynamic Viewport Height) agar pas dengan bar Safari iPhone */
+.cover-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh !important;
+  height: 100dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important; /* Membagi ruang atas-tengah-bawah secara presisi */
+  padding: env(safe-area-inset-top, 20px) 16px env(safe-area-inset-bottom, 20px) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* Optimasi ukuran konten cover agar muat di layar iPhone kecil (iPhone SE s/d 15 Pro) */
+@media (max-width: 480px) {
+  .photo-oval-frame {
+    width: 125px !important;
+    height: 165px !important;
+    margin: 5px auto 8px auto !important;
+  }
+
+  .initials-overlap-container {
+    width: 170px !important;
+    height: 85px !important;
+    margin: 4px auto 8px auto !important;
+  }
+
+  .init-big {
+    font-size: 2.8rem !important;
+  }
+
+  .init-small {
+    font-size: 0.85rem !important;
+  }
+
+  .init-center-amp {
+    font-size: 2.2rem !important;
+  }
+
+  .guest-box {
+    padding: 8px 12px !important;
+    margin: 0 auto 10px auto !important;
+  }
+
+  .guest-header, .guest-note {
+    font-size: 0.72rem !important;
+  }
+
+  .guest-name {
+    font-size: 1.05rem !important;
+  }
+
+  /* Memastikan tombol Buka Undangan selalu mengambang di atas layer iOS */
+  .btn-cover-wrapper {
+    margin-top: 4px !important;
+    margin-bottom: 10px !important;
+    position: relative !important;
+    z-index: 99999 !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  .btn-open-mehnikah {
+    padding: 10px 22px !important;
+    font-size: 0.88rem !important;
+    -webkit-appearance: none; /* Mencegah style bawaan tombol abu-abu iOS */
+  }
+}
