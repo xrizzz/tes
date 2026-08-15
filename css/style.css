@@ -1005,3 +1005,20 @@ body.lock-scroll .music-floating-btn {
   color: #ffffff;
   border-color: #0056b3;
 }
+
+/* ========================================================
+   KODE PENGUNCI SCROLL LAPTOP & HP (TARUH PALING BAWAH)
+   ======================================================== */
+html.lock-scroll,
+body.lock-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none;
+}
+
+@media (min-width: 768px) {
+  body.lock-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+  }
+}
