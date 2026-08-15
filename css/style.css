@@ -725,3 +725,116 @@ body.lock-scroll {
   font-size: 0.75rem;
   color: #799484;
 }
+
+/* 1. Aturan Kunci Scroll yang Aman untuk Layar Laptop */
+body.lock-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Khusus layar laptop/desktop, izinkan cover menyesuaikan tinggi konten agar tidak memotong tombol */
+@media (min-width: 768px) {
+  body.lock-scroll {
+    overflow-y: auto; /* Memastikan konten tetap bisa diakses jika layar laptop terlalu pendek */
+  }
+}
+
+/* 2. Sembunyikan Navbar Bawah & Tombol Musik saat Awal di Cover */
+body.lock-scroll .bottom-nav,
+body.lock-scroll .music-floating-btn {
+  display: none !important;
+}
+
+/* 3. Penataan Cover yang Rapi di Layar Laptop Maupun HP */
+.cover-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px 20px;
+  background: 
+    radial-gradient(circle at top, rgba(45, 90, 67, 0.85) 0%, rgba(69, 123, 93, 0.2) 55%, transparent 75%),
+    #fafcfb;
+  overflow: hidden;
+}
+
+.cover-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 4. Proporsi Ukuran Elemen Cover agar Muat 1 Layar Penuh di Laptop */
+.photo-oval-frame {
+  width: 140px;
+  height: 190px;
+  border-radius: 50% / 40%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 8px 20px rgba(27, 56, 41, 0.2);
+  overflow: hidden;
+  margin: 0 auto 10px;
+}
+
+.photo-oval-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials-overlap-container {
+  position: relative;
+  width: 190px;
+  height: 95px;
+  margin: 5px auto 10px auto;
+}
+
+.init-big {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 3.2rem;
+  line-height: 0.85;
+  color: var(--sage-dark, #1b3829);
+  font-weight: 700;
+}
+
+.guest-box {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(196, 218, 203, 0.8);
+  width: 90%;
+  max-width: 360px;
+  margin: 0 auto 12px;
+}
+
+/* 5. Tombol Buka Undangan Selalu Terlihat */
+.btn-cover-wrapper {
+  margin-top: 6px;
+  z-index: 10;
+}
+
+.btn-open-mehnikah {
+  background: linear-gradient(135deg, var(--sage-main, #2d5a43), var(--sage-dark, #1b3829));
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 26px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(27, 56, 41, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.btn-open-mehnikah:hover {
+  transform: scale(1.04);
+}
