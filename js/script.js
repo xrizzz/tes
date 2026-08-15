@@ -183,3 +183,42 @@ function openInvitation() {
     }
   }, 500);
 }
+
+// ========================================================
+// FUNGSI BUKA UNDANGAN (MENGHILANGKAN COVER SECARA MULUS)
+// ========================================================
+function openInvitation() {
+  // 1. Lepas kunci scroll pada body & html
+  document.body.classList.remove("lock-scroll");
+  document.documentElement.classList.remove("lock-scroll");
+
+  // 2. Beri efek geser/hilang pada cover
+  const coverEl = document.getElementById("cover");
+  if (coverEl) {
+    coverEl.classList.add("cover-hidden");
+  }
+
+  // 3. Scroll ke bagian isi utama
+  const mainSection = document.getElementById("main-content");
+  if (mainSection) {
+    mainSection.scrollIntoView({ behavior: "smooth" });
+  }
+
+  // 4. Putar musik latar
+  if (typeof music !== "undefined" && music) {
+    music.play().then(() => {
+      if (typeof musicIcon !== "undefined" && musicIcon) {
+        musicIcon.classList.add("fa-spin");
+      }
+    }).catch((err) => {
+      console.log("Audio autoplay:", err);
+    });
+  }
+
+  // 5. Refresh animasi AOS
+  setTimeout(() => {
+    if (typeof AOS !== "undefined") {
+      AOS.refresh();
+    }
+  }, 400);
+}
