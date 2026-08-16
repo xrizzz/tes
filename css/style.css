@@ -1069,3 +1069,20 @@ body.lock-scroll .music-floating-btn {
   position: relative !important;
   z-index: 99 !important;
 }
+
+/* === ANIMASI ICON & KARTU UCAPAN === */
+@keyframes pulseHeart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
