@@ -1364,3 +1364,10 @@ html {
   position: relative !important;
   z-index: 99 !important;
 }
+
+#btn-open-invitation {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 99 !important;
+}
