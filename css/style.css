@@ -1007,364 +1007,62 @@ body.lock-scroll .music-floating-btn {
 }
 
 /* ========================================================
-   KODE PENGUNCI SCROLL LAPTOP & HP (TARUH PALING BAWAH)
+   KUNCI SCROLL HALAMAN AWAL (SEBELUM BUKA UNDANGAN)
    ======================================================== */
-html.lock-scroll,
 body.lock-scroll {
-  overflow: hidden !important;
-  height: 100vh !important;
-  touch-action: none;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
 }
 
-@media (min-width: 768px) {
-  body.lock-scroll {
-    overflow: hidden !important;
-    height: 100vh !important;
-  }
+body.lock-scroll .bottom-nav,
+body.lock-scroll .music-floating-btn {
+  display: none !important;
 }
 
 /* ========================================================
-   FIX KHUSUS IPHONE / SAFARI IOS (TARUH PALING BAWAH)
+   RESPONSIF COVER & TOMBOL (SEMUA TIPE HP & IPHONE)
    ======================================================== */
-
-/* Gunakan 100dvh (Dynamic Viewport Height) agar pas dengan bar Safari iPhone */
 .cover-wrapper {
+  position: relative;
+  width: 100%;
   min-height: 100vh;
-  min-height: 100dvh !important;
-  height: 100dvh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important; /* Membagi ruang atas-tengah-bawah secara presisi */
-  padding: env(safe-area-inset-top, 20px) 16px env(safe-area-inset-bottom, 20px) !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  background: 
+    radial-gradient(circle at top, rgba(45, 90, 67, 0.85) 0%, rgba(69, 123, 93, 0.2) 55%, transparent 75%),
+    #fafcfb;
 }
 
-/* Optimasi ukuran konten cover agar muat di layar iPhone kecil (iPhone SE s/d 15 Pro) */
-@media (max-width: 480px) {
+/* Penyesuaian khusus jika dibuka di HP layar pendek/resolusi rendah */
+@media (max-height: 700px) {
   .photo-oval-frame {
-    width: 125px !important;
-    height: 165px !important;
-    margin: 5px auto 8px auto !important;
+    width: 130px !important;
+    height: 175px !important;
+    margin-bottom: 8px !important;
   }
 
   .initials-overlap-container {
-    width: 170px !important;
-    height: 85px !important;
-    margin: 4px auto 8px auto !important;
+    height: 90px !important;
+    margin: 5px auto 10px auto !important;
   }
 
   .init-big {
     font-size: 2.8rem !important;
   }
 
-  .init-small {
-    font-size: 0.85rem !important;
-  }
-
-  .init-center-amp {
-    font-size: 2.2rem !important;
-  }
-
   .guest-box {
-    padding: 8px 12px !important;
-    margin: 0 auto 10px auto !important;
-  }
-
-  .guest-header, .guest-note {
-    font-size: 0.72rem !important;
-  }
-
-  .guest-name {
-    font-size: 1.05rem !important;
-  }
-
-  /* Memastikan tombol Buka Undangan selalu mengambang di atas layer iOS */
-  .btn-cover-wrapper {
-    margin-top: 4px !important;
-    margin-bottom: 10px !important;
-    position: relative !important;
-    z-index: 99999 !important;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
-  .btn-open-mehnikah {
-    padding: 10px 22px !important;
-    font-size: 0.88rem !important;
-    -webkit-appearance: none; /* Mencegah style bawaan tombol abu-abu iOS */
-  }
-}
-
-/* ========================================================
-   PAKSA POSISI COVER CENTER MUTLAK (SEMUA HP & IPHONE)
-   ======================================================== */
-#cover.cover-wrapper {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  min-height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 20px 16px !important;
-  box-sizing: border-box !important;
-  z-index: 9999 !important;
-  background: 
-    radial-gradient(circle at top, rgba(45, 90, 67, 0.85) 0%, rgba(69, 123, 93, 0.2) 55%, transparent 75%),
-    #fafcfb !important;
-}
-
-#cover .cover-content {
-  width: 100% !important;
-  max-width: 420px !important;
-  margin: auto !important; /* Kunci agar tepat berada di tengah vertikal & horizontal */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* Sembunyikan navbar dan tombol musik saat cover masih aktif */
-body.lock-scroll .bottom-nav,
-body.lock-scroll .music-floating-btn {
-  display: none !important;
-}
-
-/* Ukuran Foto Oval */
-#cover .photo-oval-frame {
-  width: 160px !important;
-  height: 215px !important;
-  border-radius: 50% / 40% !important;
-  border: 4px solid #ffffff !important;
-  box-shadow: 0 10px 25px rgba(27, 56, 41, 0.25) !important;
-  overflow: hidden !important;
-  margin: 0 auto 12px auto !important;
-}
-
-#cover .photo-oval-frame img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-}
-
-/* Container Inisial */
-#cover .initials-overlap-container {
-  width: 220px !important;
-  height: 110px !important;
-  margin: 10px auto 16px auto !important;
-  position: relative !important;
-}
-
-/* Kotak Nama Tamu */
-#cover .guest-box {
-  width: 90% !important;
-  max-width: 360px !important;
-  padding: 15px 20px !important;
-  margin: 0 auto 20px auto !important;
-  border-radius: 16px !important;
-  background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(8px) !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-}
-
-/* Tombol Buka Undangan */
-#cover .btn-cover-wrapper {
-  margin-top: 5px !important;
-  margin-bottom: 10px !important;
-}
-
-#cover .btn-open-mehnikah {
-  padding: 14px 34px !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  border-radius: 30px !important;
-  box-shadow: 0 8px 25px rgba(27, 56, 41, 0.35) !important;
-}
-
-/* ========================================================
-   ANIMASI HILANG COVER SAAT DIBUKA
-   ======================================================== */
-#cover.cover-hidden {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transform: translateY(-100%) !important; /* Meluncur ke atas */
-  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease !important;
-}
-
-#cover.cover-wrapper {
-  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
-}
-
-/* ========================================================
-   OVERRIDE KUNCI ANDROID SAAT COVER HILANG
-   ======================================================== */
-body:not(.lock-scroll),
-html:not(.lock-scroll) {
-  overflow-y: auto !important;
-  height: auto !important;
-  touch-action: auto !important;
-}
-
-#cover.cover-hidden {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transform: translateY(-100%) !important;
-  transition: transform 0.6s ease-in-out, opacity 0.5s ease !important;
-}
-
-/* ========================================================
-   COVER ALIRAN NORMAL (TETAP ADA & SCROLL MULUS)
-   ======================================================== */
-
-/* Kembalikan cover ke posisi normal (tidak fixed & tidak hilang) */
-#cover.cover-wrapper {
-  position: relative !important;
-  width: 100% !important;
-  min-height: 100vh !important;
-  min-height: 100dvh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 20px 16px !important;
-  box-sizing: border-box !important;
-  z-index: 10 !important;
-  transform: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Kunci scroll saat awal buka web */
-html.lock-scroll,
-body.lock-scroll {
-  overflow: hidden !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  touch-action: none;
-}
-
-/* Sembunyikan navbar bawah & tombol musik saat di cover awal */
-body.lock-scroll .bottom-nav,
-body.lock-scroll .music-floating-btn {
-  display: none !important;
-}
-
-/* Aturan scroll halus bawaan CSS */
-html {
-  scroll-behavior: smooth !important;
-}
-
-/* ========================================================
-   STYLING FOOTER BRANDING FANAY.STUDIO
-   ======================================================== */
-.footer-branding {
-  text-align: center;
-  padding: 35px 20px 90px; /* Padding bawah ekstra agar tidak tertutup Bottom Navbar */
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(196, 218, 203, 0.4);
-  margin-top: 40px;
-}
-
-.brand-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.88rem;
-  color: var(--sage-dark, #1b3829);
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
-}
-
-.heart-icon {
-  display: inline-block;
-  animation: pulseHeart 1.5s infinite;
-}
-
-@keyframes pulseHeart {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-/* Tombol WhatsApp */
-.btn-wa-branding {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #25D366; /* Warna khas WhatsApp */
-  color: #ffffff !important;
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: 25px;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
-  transition: all 0.3s ease;
-}
-
-.btn-wa-branding:hover {
-  background: #20ba5a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
-}
-
-.btn-wa-branding .wa-icon {
-  font-size: 1.1rem;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- Perbaikan Tombol Cover untuk Semua Layar HP --- */
-.hero, #cover, .cover-section {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 20px 16px 40px 16px !important;
-  box-sizing: border-box !important;
-  overflow-y: auto !important;
-}
-
-@media (max-height: 700px) {
-  .hero img, #cover img {
-    max-width: 135px !important;
-    max-height: 135px !important;
-    margin-bottom: 8px !important;
-  }
-  
-  #cover .card-tamu, #cover .guest-box {
-    margin: 8px auto !important;
     padding: 8px 14px !important;
-  }
-  
-  #btn-open-invitation, .btn-buka, #cover button {
-    padding: 10px 22px !important;
-    font-size: 13px !important;
+    margin-bottom: 10px !important;
   }
 }
 
-#btn-open-invitation, .btn-buka, #cover button {
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: relative !important;
-  z-index: 99 !important;
-}
-
+/* Pastikan tombol Buka Undangan selalu di atas layer & terlihat jelas */
 #btn-open-invitation {
   opacity: 1 !important;
   visibility: visible !important;
