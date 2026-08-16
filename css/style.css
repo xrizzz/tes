@@ -1086,3 +1086,8 @@ body.lock-scroll .music-floating-btn {
     transform: translateY(0);
   }
 }
+
+@keyframes pulseHeart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
