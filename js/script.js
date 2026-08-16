@@ -384,24 +384,46 @@ snapshot.forEach((doc) => {
       commentsList.appendChild(card);
     });
 
-// Fungsi Tombol Buka Undangan
-const btnBuka = document.getElementById("btn-open-invitation");
-const audio = document.getElementById("myAudio") || document.querySelector("audio");
-const musicDisc = document.querySelector(".fa-compact-disc") || document.querySelector(".music-box");
+// --- Fungsi Buka Undangan & Buka Kunci Layar ---
+document.addEventListener("DOMContentLoaded", () => {
+  const btnBuka = document.getElementById("btn-open-invitation") || document.querySelector(".btn-buka-undangan");
+  const audio = document.getElementById("myAudio") || document.querySelector("audio");
+  const musicDisc = document.querySelector(".fa-compact-disc") || document.querySelector(".music-box");
+  const coverSection = document.getElementById("cover") || document.querySelector(".hero") || document.querySelector(".cover-section");
 
-if (btnBuka) {
-  btnBuka.addEventListener("click", function (e) {
-    if (audio) {
-      audio.play().catch((err) => console.log("Audio play error:", err));
-      if (musicDisc) musicDisc.classList.add("rotating");
-    }
+  if (btnBuka) {
+    btnBuka.addEventListener("click", function (e) {
+      e.preventDefault();
 
-    document.body.style.overflowY = "auto";
-    document.documentElement.style.overflowY = "auto";
+      // 1. Putar Musik & Putar Icon Piringan
+      if (audio) {
+        audio.play().catch((err) => console.log("Audio play error:", err));
+        if (musicDisc) musicDisc.classList.add("rotating");
+      }
 
-    const targetSection = document.getElementById("home") || document.getElementById("mempelai");
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-}
+      // 2. Buka Kunci Scroll Seluruh Halaman
+      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
+      document.documentElement.style.overflow = "auto";
+      document.documentElement.style.overflowY = "auto";
+      document.body.classList.remove("overflow-hidden", "disable-scroll");
+
+      // 3. Hilangkan Layar Cover (Fade Out)
+      if (coverSection) {
+        coverSection.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        coverSection.style.opacity = "0";
+        coverSection.style.pointerEvents = "none";
+        
+        setTimeout(() => {
+          coverSection.style.display = "none";
+        }, 800);
+      }
+
+      // 4. Arahkan Layar ke Konten Utama
+      const target = document.getElementById("home") || document.getElementById("mempelai") || document.querySelector("main");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+});
