@@ -1326,3 +1326,51 @@ html {
     transform: translateY(0);
   }
 }
+
+/* 1. Mencegah bug AOS (agar elemen tidak transparan di browser jadul) */
+html:not(.no-js) [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* 2. Tata letak cover fleksibel untuk semua ukuran layar */
+#cover, .cover-section, .hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 24px 16px 80px 16px !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+}
+
+/* 3. Penyesuaian otomatis untuk layar HP kecil/pendek (resolusi rendah) */
+@media (max-height: 720px) {
+  /* Kecilkan foto cover */
+  #cover img, .cover-img, .hero img {
+    max-width: 140px !important;
+    max-height: 140px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Rapatkan jarak tulisan & kartu nama tamu */
+  #cover h1, #cover h2, #cover h3 {
+    margin: 4px 0 !important;
+    font-size: 1.3rem !important;
+  }
+  
+  #cover .card-tamu, #cover .guest-box {
+    padding: 8px 12px !important;
+    margin: 8px 0 !important;
+  }
+
+  /* Pastikan tombol tetap proporsional & terlihat jelas */
+  #btn-open-invitation, .btn-buka, #cover button {
+    padding: 10px 24px !important;
+    font-size: 13px !important;
+    margin-top: 10px !important;
+  }
+}
