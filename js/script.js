@@ -383,3 +383,25 @@ snapshot.forEach((doc) => {
       `;
       commentsList.appendChild(card);
     });
+
+// Fungsi Tombol Buka Undangan
+const btnBuka = document.getElementById("btn-open-invitation");
+const audio = document.getElementById("myAudio") || document.querySelector("audio");
+const musicDisc = document.querySelector(".fa-compact-disc") || document.querySelector(".music-box");
+
+if (btnBuka) {
+  btnBuka.addEventListener("click", function (e) {
+    if (audio) {
+      audio.play().catch((err) => console.log("Audio play error:", err));
+      if (musicDisc) musicDisc.classList.add("rotating");
+    }
+
+    document.body.style.overflowY = "auto";
+    document.documentElement.style.overflowY = "auto";
+
+    const targetSection = document.getElementById("home") || document.getElementById("mempelai");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+}
